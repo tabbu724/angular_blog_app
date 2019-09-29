@@ -11,6 +11,7 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
 // custom imports
 import {RouterModule,Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     BlogViewComponent,
     BlogCreateComponent,
-    BlogEditComponent
+    BlogEditComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +29,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     RouterModule.forRoot([
       {path:"home",component:HomeComponent},
       {path:"create",component:BlogCreateComponent},
-      {path:"view",component:BlogViewComponent},
-      {path:"edit",component:BlogEditComponent}
+      {path:"blog/:blogId",component:BlogViewComponent},
+      {path:"edit/:blogId",component:BlogEditComponent},
+      {path:'',redirectTo:"home",pathMatch:"full"},
+      {path:'**',component:NotFoundComponent}
     ])
   ],
   providers: [],
