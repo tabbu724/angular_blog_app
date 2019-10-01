@@ -12,6 +12,7 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import {RouterModule,Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { BlogService } from './blog.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
       {path:'**',component:NotFoundComponent}
     ])
   ],
-  providers: [],
+  providers: [BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
