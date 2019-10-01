@@ -12,7 +12,7 @@ export class BlogService {
     'time': 'Jun 15, 2015, 9:03:01 AM',
     'views': 0,
     'category': 'environment',
-    "tags":[],
+    "tags":['global warming','carbon footprint','sustainable development'],
     "bodyHtml":"This is blog body"
   },
   {
