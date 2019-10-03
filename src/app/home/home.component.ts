@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BlogService } from '../blog.service';
+import { BlogHttpService } from "../blog-http.service";
 
 @Component({
   selector: 'app-home',
@@ -11,14 +12,26 @@ export class HomeComponent implements OnInit ,OnDestroy {
     console.log("home component destroyed");
   }
   allBlogs;
-  constructor(public blogservice:BlogService) { 
+  constructor(public blogservice:BlogHttpService) { 
     console.log("home component constructor called");
     
   }
 
   ngOnInit() {
     console.log("home componenet initiated");
-    this.allBlogs=this.blogservice.getAllBlogs();
+    this.allBlogs=this.blogservice.getAllBlogs().subscribe(
+      data=>{
+        console.log("logging data");
+        console.log(data);
+        this.allBlogs = data["data"]
+        
+      },
+      error=>{
+        console.log("logging error");
+        console.log(error.errorMessage());
+        
+      }
+    );
     console.log(this.allBlogs);
     
   }

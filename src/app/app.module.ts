@@ -13,6 +13,8 @@ import {RouterModule,Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BlogService } from './blog.service';
+import { BlogHttpService } from './blog-http.service';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { BlogService } from './blog.service';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path:"home",component:HomeComponent},
       {path:"create",component:BlogCreateComponent},
@@ -36,7 +39,7 @@ import { BlogService } from './blog.service';
       {path:'**',component:NotFoundComponent}
     ])
   ],
-  providers: [BlogService],
+  providers: [BlogService,BlogHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

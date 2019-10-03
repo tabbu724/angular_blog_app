@@ -3,14 +3,14 @@
         <div class="col-md-12" style="font-size: 22px">All Blogs</div>
     </div>
     <br><br><br>
-    <div class="row" style="text-align: center">
+    <div class="row" style="text-align: center" *ngIf="allBlogs.length>0">
         <div *ngFor="let blog of allBlogs" class="col-md-4">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title card-header">{{blog.title | uppercase}}</h5>
                         <br><br>
-                    <p class="card-text">{{blog.description}} <br> Posted on {{blog.time | date}} <br>
-                        by {{blog.createdBy}}
+                    <p class="card-text">{{blog.description}} <br> Posted on {{blog.lastModified | date}} <br>
+                        by {{blog.author}}
                     </p>
                     <br><br> 
                     <div class="card-footer">
