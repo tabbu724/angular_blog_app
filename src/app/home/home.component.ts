@@ -27,9 +27,7 @@ export class HomeComponent implements OnInit ,OnDestroy {
         
       },
       error=>{
-        console.log("logging error");
-        console.log(error.errorMessage());
-        
+        this.blogservice.handleError(error);
       }
     );
     console.log(this.allBlogs);

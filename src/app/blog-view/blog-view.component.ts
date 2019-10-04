@@ -30,10 +30,15 @@ export class BlogViewComponent implements OnInit ,OnDestroy{
   ngOnInit() {
     console.log("blog view component ngOnInit is called");
     let blogId = this._route.snapshot.paramMap.get('blogId');
-    // console.log(blogId);
-    // this.currentBlog =this.blogservice.getSingleBlogInfo(blogId)
-    this.currentBlog = this.httpservice.getSingleBlogInfo(blogId);
-    console.log(this.currentBlog);
+    console.log(blogId);
+    this.currentBlog = this.httpservice.getSingleBlogInfo(blogId).subscribe(
+      data=>{
+        this.currentBlog=data['data'];
+      },
+      error=>{
+        this.httpservice.handleError(error);
+      }
+    );
     
   }
 

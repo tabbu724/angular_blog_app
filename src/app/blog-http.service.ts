@@ -1,30 +1,41 @@
 import { Injectable } from '@angular/core';
-import {HttpClient,HttpErrorResponse,HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { Observable } from '../../node_modules/rxjs';
-import { catchError , tap } from '../../node_modules/rxjs/operators';
- 
+import { catchError, tap } from '../../node_modules/rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class BlogHttpService {
-  public allBlogs:any;
+  public allBlogs: any;
 
-  public currentBlog:any;
+  public baseUrl = 'https://blogapp.edwisor.com/api/v1/blogs';
 
-  public baseUrl='https://blogapp.edwisor.com/api/v1/blogs';
+  private token = 'ZDM4MzNiZWJmMGEyOTRkMGI0MWQxMWIzMWQ4ZGUyMThlN2ViYTJiNjIzMjQ3ZmJlZjNhNTIxZDA0YjE2OGNmNDliNzk0NjNmYmE4Nzk3ZTk1YmZlMGMzYjIxNWVlZmU2YWU3YjgzZDQ3YzI0OTc2MzgzM2ZjNzJiMWI2NjY2Y2QwMg=='
 
-  constructor(public _http:HttpClient) {
+  constructor(public _http: HttpClient) {
+    console.log("http service initialised");
     
-   }
+  }
 
-  getAllBlogs=():any=>{
-    let response = this._http.get(this.baseUrl+'/all?authToken=ZDM4MzNiZWJmMGEyOTRkMGI0MWQxMWIzMWQ4ZGUyMThlN2ViYTJiNjIzMjQ3ZmJlZjNhNTIxZDA0YjE2OGNmNDliNzk0NjNmYmE4Nzk3ZTk1YmZlMGMzYjIxNWVlZmU2YWU3YjgzZDQ3YzI0OTc2MzgzM2ZjNzJiMWI2NjY2Y2QwMg==')
-    console.log(response);
+  // exception handler
+  public handleError=(err :HttpErrorResponse)=>{
+    console.log("handling errors");
+    console.log(err.message);
+    return Observable.throw(err.message);
+    
+  }
+
+
+  getAllBlogs = (): any => {
+    let response = this._http.get(this.baseUrl + '/all?authToken='+this.token)
     return response;
-    
   }
 
-  getSingleBlogInfo = (currentBlogId:string):any=>{
-    
+  getSingleBlogInfo = (currentBlogId: string): any => {
+    console.log("single blog method called");
+    let response = this._http.get(this.baseUrl + '/view/'+currentBlogId+'?authToken='+this.token)
+    return response;
   }
+
 }
