@@ -26,7 +26,6 @@ export class BlogHttpService {
     
   }
 
-
   getAllBlogs = (): any => {
     let response = this._http.get(this.baseUrl + '/all?authToken='+this.token)
     return response;
@@ -35,6 +34,21 @@ export class BlogHttpService {
   getSingleBlogInfo = (currentBlogId: string): any => {
     console.log("single blog method called");
     let response = this._http.get(this.baseUrl + '/view/'+currentBlogId+'?authToken='+this.token)
+    return response;
+  }
+
+  createBlog=(blogData)=>{
+    let response = this._http.post(this.baseUrl +'/create?authToken='+this.token,blogData)
+    return response;
+  }
+
+  editBlog=(currentBlogId: string,blogData)=>{
+    let response = this._http.put(this.baseUrl+'/'+currentBlogId+'/edit?authToken='+this.token,blogData)
+    return response;
+  }
+
+  deleteblog=(currentBlogId: string)=>{
+    let response = this._http.get(this.baseUrl + '/'+currentBlogId+'/delete'+'?authToken='+this.token)
     return response;
   }
 

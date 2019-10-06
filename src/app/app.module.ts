@@ -15,6 +15,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { BlogService } from './blog.service';
 import { BlogHttpService } from './blog-http.service';
 import { HttpClientModule } from "@angular/common/http";
+import  { FormsModule } from "@angular/forms"
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HttpClientModule } from "@angular/common/http";
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
       {path:"home",component:HomeComponent},
       {path:"create",component:BlogCreateComponent},
