@@ -15,7 +15,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { BlogService } from './blog.service';
 import { BlogHttpService } from './blog-http.service';
 import { HttpClientModule } from "@angular/common/http";
-import  { FormsModule } from "@angular/forms"
+import  { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import  { FormsModule } from "@angular/forms"
     NgbModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot([
       {path:"home",component:HomeComponent},
       {path:"create",component:BlogCreateComponent},

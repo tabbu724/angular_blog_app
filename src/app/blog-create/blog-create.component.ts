@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogHttpService } from "../blog-http.service";
+import { ToastrService } from 'ngx-toastr';
+import {ActivatedRoute ,Router} from "@angular/router";
 
 @Component({
   selector: 'app-blog-create',
@@ -14,7 +16,8 @@ export class BlogCreateComponent implements OnInit {
   public category:string;
   public categoryValues=['comedy','technology','environment','politics'];
   
-  constructor(public http_service:BlogHttpService) {  }
+  constructor(private http_service:BlogHttpService,private toastr: ToastrService,
+    private _aroute:ActivatedRoute , private route:Router) {  }
   
   getBlogdata=()=>{
     let blogData = {
@@ -26,12 +29,16 @@ export class BlogCreateComponent implements OnInit {
     
     this.http_service.createBlog(blogData).subscribe(
       data=>{
-        console.log("blog posted successfully");
+        this.toastr.success('Blog Created Successfully!', 'Success!');
+        setTimeout(() => {
+          this.route.navigate(['/blog',data['data'].blogId]);
+        }, 2000);
+        
         console.log(data);
         
       },
       error=>{
-        console.log("some error occurred");
+        this.toastr.error('Some error occurred!', 'Oops!');
         this.http_service.handleError(error);
       }
     );
