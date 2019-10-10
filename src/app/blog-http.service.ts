@@ -48,7 +48,7 @@ export class BlogHttpService {
   }
 
   deleteblog=(currentBlogId: string)=>{
-    let response = this._http.get(this.baseUrl + '/'+currentBlogId+'/delete'+'?authToken='+this.token)
+    let response = this._http.post(this.baseUrl + '/'+currentBlogId+'/delete'+'?authToken='+this.token,'');
     return response;
   }
 
