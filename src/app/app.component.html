@@ -7,7 +7,7 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4 sticky-top">
   <a class="navbar-brand" [routerLink]="['/home']">Let's Blog It</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -37,9 +37,9 @@
 
 
 
-<router-outlet></router-outlet>
+<router-outlet ></router-outlet>
 
-<div class=" footer ">
+<div class=" footer fixed-bottom">
   <div class="container text-center ">
     <span class="text-muted ">&copy;Blog Rights</span>
     </div>
